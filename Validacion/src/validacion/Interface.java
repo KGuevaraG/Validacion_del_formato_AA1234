@@ -55,11 +55,16 @@ public class Interface extends javax.swing.JFrame {
         
         String cadena=Entrada.getText();
         Confirmacion.setText("");
+        SalidaNumeros.setText("");
+        SalidaLetras.setText("");
         if(Val.isInteger(cadena.substring(2))){
         
             if(!Val.isInteger(cadena.substring(0, 1))){
             
                 Confirmacion.setText("Formato valido");
+                
+                SalidaNumeros.setText(cadena.substring(2));
+                SalidaLetras.setText(cadena.substring(0, 2));
             }else{
             
                 Confirmacion.setText("Formato invalido");
