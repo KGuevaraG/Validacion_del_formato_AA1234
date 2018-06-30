@@ -76,20 +76,25 @@ public class Interface extends javax.swing.JFrame {
         if(Val.isInteger(cadena.substring(2))){
         
             if(!Val.isInteger(cadena.substring(0, 1))){
+                if(!Val.isInteger(cadena.substring(1, 2))){
             
                 Confirmacion.setText("Formato valido");
                 
                 SalidaNumeros.setText(cadena.substring(2));
                 SalidaLetras.setText(cadena.substring(0, 2));
-            }else{
-            
+                }else{
                 Confirmacion.setText("Formato invalido");
                 Entrada.setText("");
             }
+            }else{
+            Confirmacion.setText("Formato invalido");
+            Entrada.setText("");
+        }
         }else{
         
             Confirmacion.setText("Formato invalido");
             Entrada.setText("");
+
         }
     }//GEN-LAST:event_ValidacionActionPerformed
 
