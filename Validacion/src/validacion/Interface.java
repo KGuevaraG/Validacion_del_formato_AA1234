@@ -11,9 +11,9 @@ package validacion;
  */
 public class Interface extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Interface
-     */
+  
+    Validacion Val=new Validacion();
+    
     public Interface() {
         initComponents();
     }
@@ -31,18 +31,44 @@ public class Interface extends javax.swing.JFrame {
         Entrada = new javax.swing.JTextField();
         SalidaNumeros = new javax.swing.JTextField();
         SalidaLetras = new javax.swing.JTextField();
+        Confirmacion = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Validacion.setText("Validacion");
+        Validacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ValidacionActionPerformed(evt);
+            }
+        });
         getContentPane().add(Validacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, -1, -1));
         getContentPane().add(Entrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 110, -1));
         getContentPane().add(SalidaNumeros, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 110, -1));
         getContentPane().add(SalidaLetras, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 110, -1));
+        getContentPane().add(Confirmacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 190, 20));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ValidacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ValidacionActionPerformed
+        
+        String cadena=Entrada.getText();
+        Confirmacion.setText("");
+        if(Val.isInteger(cadena.substring(2))){
+        
+            if(!Val.isInteger(cadena.substring(0, 1))){
+            
+                Confirmacion.setText("Formato valido");
+            }else{
+            
+                Confirmacion.setText("Formato invalido");
+            }
+        }else{
+        
+            Confirmacion.setText("Formato invalido");
+        }
+    }//GEN-LAST:event_ValidacionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -80,6 +106,7 @@ public class Interface extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Confirmacion;
     private javax.swing.JTextField Entrada;
     private javax.swing.JTextField SalidaLetras;
     private javax.swing.JTextField SalidaNumeros;
