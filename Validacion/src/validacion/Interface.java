@@ -16,6 +16,8 @@ public class Interface extends javax.swing.JFrame {
     
     public Interface() {
         initComponents();
+        
+        Entrada.setFocusable(true);
     }
 
     /**
@@ -32,6 +34,8 @@ public class Interface extends javax.swing.JFrame {
         SalidaNumeros = new javax.swing.JTextField();
         SalidaLetras = new javax.swing.JTextField();
         Confirmacion = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -43,10 +47,22 @@ public class Interface extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Validacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, -1, -1));
+
+        Entrada.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                EntradaKeyTyped(evt);
+            }
+        });
         getContentPane().add(Entrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 110, -1));
         getContentPane().add(SalidaNumeros, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 110, -1));
         getContentPane().add(SalidaLetras, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 110, -1));
         getContentPane().add(Confirmacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 190, 20));
+
+        jLabel1.setText("Numeros");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
+
+        jLabel2.setText("Letras");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -68,12 +84,22 @@ public class Interface extends javax.swing.JFrame {
             }else{
             
                 Confirmacion.setText("Formato invalido");
+                Entrada.setText("");
             }
         }else{
         
             Confirmacion.setText("Formato invalido");
+            Entrada.setText("");
         }
     }//GEN-LAST:event_ValidacionActionPerformed
+
+    private void EntradaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EntradaKeyTyped
+        
+        if(Entrada.getText().length()==6){
+        
+            evt.consume();
+        }
+    }//GEN-LAST:event_EntradaKeyTyped
 
     /**
      * @param args the command line arguments
@@ -116,5 +142,7 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JTextField SalidaLetras;
     private javax.swing.JTextField SalidaNumeros;
     private javax.swing.JButton Validacion;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
